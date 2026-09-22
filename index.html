@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Please Wait | Event Access</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #080808;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+/* Main Container */
+
+.redirect-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  position: relative;
+}
+
+
+/* Background Glow */
+
+.redirect-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  background: radial-gradient(
+    circle,
+    rgba(120,120,120,.10) 0%,
+    rgba(120,120,120,.04) 35%,
+    transparent 70%
+  );
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+/* Card */
+
+.redirect-card {
+  width: 100%;
+  max-width: 480px;
+
+  text-align: center;
+
+  padding: 38px 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #141414,
+      #0e0e0e
+    );
+
+  border: 1px solid #292929;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.025);
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* Top Line */
+
+.redirect-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 15%;
+  right: 15%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #666,
+      transparent
+    );
+}
+
+
+/* Event Icon */
+
+.event-icon {
+  width: 66px;
+  height: 66px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #1c1c1c;
+
+  border: 1px solid #383838;
+
+  color: #d0d0d0;
+
+  font-size: 28px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+
+/* Spinner */
+
+.spinner {
+  width: 30px;
+  height: 30px;
+
+  margin: 0 auto 22px;
+
+  border-radius: 50%;
+
+  border: 3px solid #303030;
+
+  border-top-color: #bdbdbd;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Heading */
+
+.redirect-card h1 {
+  color: #f1f1f1;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+
+/* Description */
+
+.redirect-card p {
+  color: #888888;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin-bottom: 25px;
+}
+
+
+/* Progress */
+
+.progress-box {
+  width: 100%;
+
+  height: 4px;
+
+  background: #252525;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  width: 0%;
+
+  height: 100%;
+
+  background: #bdbdbd;
+
+  border-radius: 20px;
+
+  animation: progress 4s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+/* Please Wait */
+
+.wait-text {
+  color: #666666;
+
+  font-size: 12px;
+
+  letter-spacing: .5px;
+}
+
+
+/* Footer */
+
+.redirect-footer {
+  margin-top: 25px;
+
+  color: #4f4f4f;
+
+  font-size: 11px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .redirect-page {
+    padding: 15px;
+  }
+
+  .redirect-card {
+    padding: 32px 20px;
+
+    border-radius: 17px;
+  }
+
+  .event-icon {
+    width: 58px;
+    height: 58px;
+
+    font-size: 24px;
+
+    margin-bottom: 18px;
+  }
+
+  .redirect-card h1 {
+    font-size: 22px;
+  }
+
+  .redirect-card p {
+    font-size: 13px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="redirect-page">
+
+  <div class="redirect-card">
+
+    <div class="event-icon">
+      ▶
+    </div>
+
+    <div class="spinner"></div>
+
+    <h1>Please Wait</h1>
+
+    <p>
+      Preparing your event experience.
+      You will be redirected shortly.
+    </p>
+
+    <div class="progress-box">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="wait-text">
+      Please wait a moment...
+    </div>
+
+    <div class="redirect-footer">
+      Event access is being prepared
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/*
+  =========================================
+  EVENT REDIRECT
+  =========================================
+*/
+
+const destination =
+"https://yhbcii.com/af?o=89117d3a3a4a40ebf33c136aaca1e0:98ac7d21130804ae1d415f2db603d8f7";
+
+
+/*
+  Redirect after 4 seconds
+*/
+
+setTimeout(function () {
+
+  window.location.replace(destination);
+
+}, 4000);
+
+
+/*
+  Prevent accidental back-button
+  from immediately returning to
+  the redirect screen.
+*/
+
+window.addEventListener("pageshow", function(event) {
+
+  if (event.persisted) {
+    window.location.replace(destination);
+  }
+
+});
+
+</script>
+
+</body>
+</html>
+
